@@ -8,7 +8,8 @@ M.yank_lines = function()
   clean_reg()
 
   local last_search = vim.fn.getreg('/')
-  local cmd = '%s/' .. last_search .. "/\\=setreg('A', submatch(0) . '\\n')/n"
+  local cmd = '%s/' .. last_search .. [[/\\=setreg('A', submatch(0)
+)/n]]
 
   vim.cmd(cmd)
 
