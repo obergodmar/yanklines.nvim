@@ -1,6 +1,6 @@
 local M = {}
 
-local function region_to_text()
+M.region_to_text = function()
   local region = vim.region(0, "'<", "'>", vim.fn.visualmode(), true)
 
   local text = ''
@@ -11,10 +11,6 @@ local function region_to_text()
     text = ('%s%s\n'):format(text, chunk)
   end
   return text
-end
-
-function M.setup()
-  vim.keymap.set('n', '<leader>y', region_to_text, { desc = 'Test' })
 end
 
 return M
