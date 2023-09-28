@@ -1,0 +1,5 @@
+return {
+  globals = {
+    'vim',
+  },
+}
