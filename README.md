@@ -13,7 +13,7 @@ return {
     {
       '<leader>Y',
       '<cmd>lua require("yanklines").yank_lines()<cr>',
-      mode = { 'n', 'v' },
+      mode = { 'n' },
       id = 'yanklines',
     },
   },
