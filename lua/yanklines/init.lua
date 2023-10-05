@@ -57,11 +57,13 @@ M.yank_lines = function(v_mode)
 
   v_mode = v_mode or false
   if v_mode then
+    -- Exit V-Block mode in order to get last region
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'x', true)
   end
   write_matched_text(last_search, v_mode)
   read_text_from_reg()
 
+  -- Cleaning reg after manipulation 
   clean_reg()
 end
 
