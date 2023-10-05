@@ -21,7 +21,7 @@ end
 local function write_matched_text(last_search, v_mode)
   -- If we are in V-Block write matched text only from selected region
   -- otherwise write from hole buffer
-  local cmd_special = v_mode and "'<,'>" or '%' 
+  local cmd_special = v_mode and "'<,'>" or '%'
 
   -- To divide match searches by a new line it is mandatory to write into
   -- different reg rather then just to +y.
@@ -56,6 +56,9 @@ M.yank_lines = function(v_mode)
   end
 
   v_mode = v_mode or false
+  if v_mode then
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'x', true)
+  end
   write_matched_text(last_search, v_mode)
   read_text_from_reg()
 
