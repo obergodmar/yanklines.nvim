@@ -30,3 +30,28 @@ The plugin basically does three things:
 3) Writes the content from reg to system clipboard
 
 Every point could be done with just vim commands without this plugin. But with this plugin makes it is easier and you don't need to memorize how to write to reg via command line every time when you need to copy all search matches you have in an opened buffer.
+
+## V-Block Mode
+
+Also it is possible to copy matched text only in visually selected region in vim's **v-block** mode. To do so add another shortcut or call the function `yank_lines` with an arg `true` which means **v-block** mode.
+
+Example:
+
+```lua
+keys = {
+  {
+    '<leader>Y',
+    '<cmd>lua require("yanklines").yank_lines()<cr>',
+    -- Normal Mode
+    mode = { 'n' },
+    id = 'yanklines',
+  },
+  {
+    '<leader>Y',
+    '<cmd>lua require("yanklines").yank_lines(true)<cr>', --With an argument
+    -- V-Block mode
+    mode = { 'v' },
+    id = 'yanklines_v_block',
+  },
+}
+```

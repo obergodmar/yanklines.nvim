@@ -27,9 +27,9 @@ local function write_matched_text(last_search, v_mode)
   -- different reg rather then just to +y.
   local cmd = cmd_special .. 's/' .. last_search .. "/\\=setreg('A', submatch(0) . '\\n')/n"
 
-  local success = pcall(vim.api.nvim_command, cmd)
+  local success, error = pcall(vim.api.nvim_command, cmd)
   if not success then
-    print("Can't write to reg a")
+    print("Can't write to reg a", error)
   end
 end
 
