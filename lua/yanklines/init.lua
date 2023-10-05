@@ -21,11 +21,11 @@ end
 local function write_matched_text(last_search, v_mode)
   -- If we are in V-Block write matched text only from selected region
   -- otherwise write from hole buffer
-  local cmd_cpecial = v_mode and '%' or "'<,'>"
+  local cmd_special = v_mode and "'<,'>" or '%' 
 
   -- To divide match searches by a new line it is mandatory to write into
   -- different reg rather then just to +y.
-  local cmd = cmd_cpecial .. 's/' .. last_search .. "/\\=setreg('A', submatch(0) . '\\n')/n"
+  local cmd = cmd_special .. 's/' .. last_search .. "/\\=setreg('A', submatch(0) . '\\n')/n"
 
   local success = pcall(vim.api.nvim_command, cmd)
   if not success then
