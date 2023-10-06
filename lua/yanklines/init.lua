@@ -45,7 +45,7 @@ local function read_text_from_reg()
   pcall(vim.fn.setreg, '+y', unescaped_result)
 end
 
----@param v_mode boolean
+---@param v_mode boolean?
 M.yank_lines = function(v_mode)
   -- Make sure that's the a reg doesn't contain anything
   clean_reg()
