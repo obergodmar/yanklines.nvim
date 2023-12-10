@@ -65,10 +65,10 @@ keys = {
 
 ## Options
 
-To control which neovim registers the plugin should use you could pass options arg to a `yank_lines` function.
+To control which neovim registers the plugin should use you could pass options arg to a `yank_lines` function.\
 `opts { v_mode: boolean?, reg_read_to: string?, reg_write_to: string? }`
 
-`v_mode` - execute the fn in V-Block neovim mode
-`reg_read_to` - register name to read to data from matched text. Default is 'a'.
-`reg_write_to` - register name to write to data. Default is '+y' which is the system clipboard.
+`v_mode` - execute the fn in V-Block neovim mode.\
+`reg_read_to` - register name to read to data from matched text. Default is 'a'.\
+`reg_write_to` - register name to write to data. Default is '+y' which is the system clipboard.\
 
