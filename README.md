@@ -12,7 +12,10 @@ return {
   keys = {
     {
       '<leader>Y',
-      '<cmd>lua require("yanklines").yank_lines()<cr>',
+      function()
+        require('yanklines').yank_lines()
+      end,
+      desc = '[Y]ank matched text',
       mode = { 'n' },
       id = 'yanklines',
     },
@@ -20,7 +23,7 @@ return {
 }
 ```
 
-Modify command `'<cmd>lua require("yanklines").yank_lines()<cr>'` as you want, assign it to different shortcut or use `yank_lines` in another plugin/function.
+Modify command `require('yanklines').yank_lines()` as you want, assign it to different shortcut or use `yank_lines` in another plugin/function.
 
 ## Description
 
@@ -33,7 +36,7 @@ Every point could be done with just vim commands without this plugin. But with t
 
 ## V-Block Mode
 
-Also it is possible to copy matched text only in visually selected region in vim's **v-block** mode. To do so add another shortcut or call the function `yank_lines` with an arg `true` which means **v-block** mode.
+Also it is possible to copy matched text only in visually selected region in vim's **v-block** mode. To do so add another shortcut or call the function `yank_lines` with an options arg and set `v_mode` which means **v-block** mode to true.
 
 Example:
 
@@ -41,17 +44,31 @@ Example:
 keys = {
   {
     '<leader>Y',
-    '<cmd>lua require("yanklines").yank_lines()<cr>',
-    -- Normal Mode
+    function()
+      require('yanklines').yank_lines()
+    end,
+    desc = '[Y]ank matched text',
     mode = { 'n' },
     id = 'yanklines',
   },
   {
     '<leader>Y',
-    '<cmd>lua require("yanklines").yank_lines(true)<cr>', --With an argument
-    -- V-Block mode
+    function()
+      require('yanklines').yank_lines({ v_mode = true })
+    end,
+    desc = '[Y]ank matched text',
     mode = { 'v' },
     id = 'yanklines_v_block',
   },
 }
 ```
+
+## Options
+
+To control which neovim registers the plugin should use you could pass options arg to a `yank_lines` function.
+`opts { v_mode: boolean?, reg_read_to: string?, reg_write_to: string? }`
+
+`v_mode` - execute the fn in V-Block neovim mode
+`reg_read_to` - register name to read to data from matched text. Default is 'a'.
+`reg_write_to` - register name to write to data. Default is '+y' which is the system clipboard.
+
