@@ -1,7 +1,7 @@
 # yanklines.nvim
 This plugin provides a convenient way of copying search matches in nvim.
 
-[Screencast_20231005_205240-1.webm](https://github.com/obergodmar/yanklines.nvim/assets/33424304/0e828fd5-8721-4c90-a3da-af8d778fd9d4)
+[Screencast.mp4](https://github.com/obergodmar/yanklines.nvim/assets/33424304/85268d1c-83c8-4b4a-a860-c650de435964)
 
 ## Installation
 
