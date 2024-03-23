@@ -2,7 +2,7 @@
 local function get_last_search()
   local last_search = vim.fn.getreg('/')
   if not last_search then
-    print('There is now last search')
+    print('There is no last search')
 
     return nil
   end
@@ -81,6 +81,8 @@ local function yank_lines(opts)
   local reg_write_to = opts.reg_write_to or '+y'
   -- Finally write to reg
   pcall(vim.fn.setreg, reg_write_to, text)
+
+  print("yank lines to ", reg_write_to)
 end
 
 return {
